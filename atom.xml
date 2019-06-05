@@ -50,7 +50,7 @@
     <link href="http://yoursite.com/2019/06/04/Spring%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6/"/>
     <id>http://yoursite.com/2019/06/04/Spring的核心机制/</id>
     <published>2019-06-04T15:00:28.000Z</published>
-    <updated>2019-06-04T15:50:14.713Z</updated>
+    <updated>2019-06-05T15:53:16.410Z</updated>
     
     <content type="html"><![CDATA[<p>首先，Spring是一个轻量级的（面向切面AOP、IOC控制反转）容器框架。</p><h2 id="Spring的优点："><a href="#Spring的优点：" class="headerlink" title="Spring的优点："></a>Spring的优点：</h2><ol><li>降低组件之间的耦合性</li><li>使程序员更加专注于自己的核心业务，像日志、安全等抽出来统一处理</li><li>方便单元测试</li><li>方便事务处理</li><li>不强制应用完全依赖Spring，开发者可以自由选用Sprig的部分或全部功能</li><li>对主流框架提供了集成支持，如Hibernate，JPA，Struts等</li><li>属于低侵入式设计，代码污染度极低</li><li>提供了单例模式的支持</li></ol><h2 id="AOP和IOC"><a href="#AOP和IOC" class="headerlink" title="AOP和IOC"></a>AOP和IOC</h2><h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>把业务逻辑和系统级别的服务分离开来，使程序员更加专注于自己的业务逻辑，而不需要管系统级别的服务。容器中的对象能享有容器中的公共服务（事务、安全等）。</p><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>AOP是基于动态代理的。用到了代理模式，代理模式是一种静态代理，而动态代理就是利用反射和动态编译将代理模式变成动态的。得知被代理类后通过反射得知他的一切信息，然后动态编译成代理类的class文件（动态组装成代理类，生成java文件，再编译成class文件）。</p><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>提供另外一种变成思路，可以把类似的行为抽出来统一处理。</p><h3 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h3>]]></content>
     
@@ -63,6 +63,8 @@
       
     
     </summary>
+    
+      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
     
     
   </entry>
