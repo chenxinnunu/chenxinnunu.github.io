@@ -403,7 +403,7 @@
                 
               
 
-              <time title="创建时间：2019-06-05 21:57:23 / 修改时间：23:26:30" itemprop="dateCreated datePublished" datetime="2019-06-05T21:57:23+08:00">2019-06-05</time>
+              <time title="创建时间：2019-06-05 21:57:23 / 修改时间：23:37:16" itemprop="dateCreated datePublished" datetime="2019-06-05T21:57:23+08:00">2019-06-05</time>
             
 
             
@@ -583,17 +583,13 @@
 </li>
 <li><p>发送HTTP请求</p>
 <p>  客户端向服务器发起http请求的时候，会有一些请求信息，请求信息包含三个部分：</p>
-<p>  1、请求方法URI协议/版本。比如：GET/sample.jsp HTTP/1.1</p>
+<p>  1、请求方法URI协议/版本。比如：</p>
+<p>  <code>GET/sample.jsp HTTP/1.1</code></p>
 <p>  2、请求头(Request Header)请求头包含许多有关的客户端环境和请求正文的有用信息。例如，请求头可以声明浏览器所用的语言，请求正文的长度等。比如：</p>
-<p>   Accept:image/gif.image/jpeg.<em>/</em></p>
-<p>   Accept-Language:zh-cn</p>
-<p>   Connection:Keep-Alive</p>
-<p>   Host:localhost</p>
-<p>   User-Agent:Mozila/4.0(compatible:MSIE5.01:Windows NT5.0)</p>
-<p>   Accept-Encoding:gzip,deflate.</p>
-<p>   注意：请求头和请求正文之间有一个空行，这个空行非常重要，它表示请求头已经结束，接下来的是请求正文。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Accept:image/gif.image/jpeg.*/*</span><br><span class="line">Accept-Language:zh-cn</span><br><span class="line">Connection:Keep-Alive</span><br><span class="line">Host:localhost</span><br><span class="line">User-Agent:Mozila/4.0(compatible:MSIE5.01:Windows NT5.0)</span><br><span class="line">Accept-Encoding:gzip,deflate.</span><br></pre></td></tr></table></figure>
+<p>  注意：请求头和请求正文之间有一个空行，这个空行非常重要，它表示请求头已经结束，接下来的是请求正文。</p>
 <p>  3、请求正文：请求正文中可以包含客户提交的查询字符串信息。比如： </p>
-<pre><code>username=jinqiao&amp;password=1234
+<pre><code>`username=jinqiao&amp;password=1234`
 </code></pre><p>  123合起来就是一个完整的HTTP请求例子</p>
 </li>
 <li><p>服务器处理请求</p>
