@@ -358,6 +358,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/面试相关问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈鑫">
+      <meta itemprop="description" content="chxin">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/05/面试相关问题/" class="post-title-link" itemprop="url">面试相关问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-05 21:57:23 / 修改时间：21:57:58" itemprop="dateCreated datePublished" datetime="2019-06-05T21:57:23+08:00">2019-06-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>怎么防止卖超</p>
+<p>答：</p>
+<ul>
+<li>redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步</li>
+<li>redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品</li>
+<li>Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新redis，</li>
+<li>乐观锁更新库存：库存表里加上版本号的字段，带上版本号一起进行更新</li>
+<li>中间件异步：将更新库存和创建订单的操作异步，库存更新成功之后就将订单信息发给中间件，这样一个请求就可以直接返回了。消费程序再对数据进行入库落地。因为异步了，所以最终需要采取回调或者是其他提醒的方式提醒用户购买完成。</li>
+</ul>
+</li>
+<li><p>mybatis是怎么通过dao里面的接口找到对应的sql的</p>
+<p>答：</p>
+<ul>
+<li>比较复杂，简单点说就是根据namespace和id找到的，哈哈</li>
+<li><ol>
+<li>Mapper接口在初始SqlSessionFactory注册的。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Mapper接口注册在了名为 MapperRegistry 类的 HashMap中， key = Mapper class； value = 创建当前Mapper的工厂。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Mapper 注册之后，可以从SqlSession中get</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>SqlSession.getMapper 运用了 JDK动态代理，产生了目标Mapper接口的代理对象。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>动态代理的代理类是 MapperProxy ，这里边最终完成了增删改查方法的调用。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>jdk的动态代理和cglib有什么区别</p>
+<p>答：</p>
+<ul>
+<li>JDK动态代理依赖Proxy类和InvocationHandler接口，调用Proxy类中的newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)方法可以创建一个动态代理对象，但是这个方法需要3个参数，前两个参数是固定的，但第三个参数比较麻烦，需要我们创建一个类MyInvocationHandler来实现InvocationHandler接口，这个类里面要重写invoke()方法。</li>
+<li>JDK动态代理只能对实现了接口的类生成代理对象；cglib可以对任意类生成代理对象，它的原理是对目标对象进行继承代理，实际代理的是代理对象的子类，如果目标对象被final修饰，那么该类无法被cglib代理。</li>
+<li>Spring框架的一大特点就是AOP，SpringAOP的本质就是动态代理，如果被代理对象实现了接口，就优先使用JDK代理，如果没有实现接口，就用用cglib代理。</li>
+</ul>
+</li>
+<li><p>拦截器相关</p>
+<p>答：</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li>哨兵的选举策略</li>
+<li>sycnized做了那些优化</li>
+<li>volatile是怎么实现可见性的</li>
+<li><p>ArrayList怎么扩容的</p>
+<p>答: 添加一个元素，首先计算当前的array所需的最小容量的大小，判断是否需要扩容。</p>
+<p>当需要扩容时：</p>
+<ul>
+<li>得到当前的ArrayList的容量(oldCapacity)。</li>
+<li>计算出扩容后的新容量(newCapacity)，其值(oldCapacity + (oldCapacity &gt;&gt;1))约是    oldCapacity 的1.5倍。</li>
+<li>这里采用的是移位运算。为什么采用这种方法呢？应该是出于效率的考虑。</li>
+<li>当newCapacity小于所需最小容量，那么将所需最小容量赋值给newCapacity。</li>
+<li>newCapacity大于ArrayList的所允许的最大容量,处理。进行数据的复制，完成向ArrayList实例添加元素操作。</li>
+<li>每次array的size到达当前的容量最大值后，再插入数据就会造成扩容。</li>
+</ul>
+</li>
+<li>处理器映射器是怎么通过URL找到对应的处理器的</li>
+<li>在浏览器地址栏输入一个 url， 中间会发生什么？</li>
+<li>还有map上的链表什么时候变成红黑树</li>
+<li>什么是自旋锁</li>
+<li>对Lock相关锁的理解</li>
+<li>hash算法怎么实现</li>
+<li>hash冲突怎么回事</li>
+<li>怎么解决hash冲突</li>
+<li><p>为什么循环删除ArrayList会出错</p>
+<p>答：</p>
+<ul>
+<li>for循环删除数组里面的元素会向左移，list的长度也会发生变化，但是for循环中的i的数值是自增的，比如说上一次遍历到了第2个元素，下标为1，然后删除，下一次遍历i变成了3，但是第三个元素的下标还是1，这个时候第三个元素就会遍历不到，所以可能会导致少遍历了某个或几个元素。可以用list的长度自减的方式进行删除。</li>
+<li>foreach循环删除元素的时候，foreach写法是对实际的Iterable、hasNext、next方法的简写，迭代器内部会做修改次数检查，所以会并发异常。要避免这种情况的出现则在使用迭代器迭代时（显示或for-each的隐式）不要使用ArrayList的remove，改为用Iterator的remove即可。</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/Spring的核心机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -571,7 +825,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
