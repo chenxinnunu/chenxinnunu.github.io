@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="1. 怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新re">
+  <meta name="description" content="怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试相关问题">
 <meta property="og:url" content="http://yoursite.com/2019/06/05/面试相关问题/index.html">
 <meta property="og:site_name" content="chxin&#39;s Blog">
-<meta property="og:description" content="1. 怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新re">
+<meta property="og:description" content="怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新redis">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-05T16:19:03.251Z">
+<meta property="og:updated_time" content="2019-06-05T16:22:26.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试相关问题">
-<meta name="twitter:description" content="1. 怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新re">
+<meta name="twitter:description" content="怎么防止卖超或者怎么设置一个秒杀系统 答：  redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步  redis限流：可以使用redis限流，大量的请求进来但是能更新数据库的只有库存数量的请求，为了减少服务器的压力，所以进行限流，比如限制100个请求过来，去争夺这10个商品  Redis缓存：库存先缓存到redis里面，每次查库存和版本号从redis里面查，扣库存时更新redis">
 
 
 
@@ -418,7 +418,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-06 00:19:03" itemprop="dateModified" datetime="2019-06-06T00:19:03+08:00">2019-06-06</time>
+                <time title="修改时间：2019-06-06 00:22:26" itemprop="dateModified" datetime="2019-06-06T00:22:26+08:00">2019-06-06</time>
               
             
           </span>
@@ -498,7 +498,7 @@
       
 
       
-        <h3 id="1-怎么防止卖超或者怎么设置一个秒杀系统"><a href="#1-怎么防止卖超或者怎么设置一个秒杀系统" class="headerlink" title="1. 怎么防止卖超或者怎么设置一个秒杀系统"></a>1. 怎么防止卖超或者怎么设置一个秒杀系统</h3><p> 答：</p>
+        <h3 id="怎么防止卖超或者怎么设置一个秒杀系统"><a href="#怎么防止卖超或者怎么设置一个秒杀系统" class="headerlink" title="怎么防止卖超或者怎么设置一个秒杀系统"></a>怎么防止卖超或者怎么设置一个秒杀系统</h3><p> 答：</p>
 <ul>
 <li><p>redis限流 + Redis缓存 + 乐观锁更新 + 消息中间件异步</p>
 </li>
@@ -511,7 +511,7 @@
 <li><p>中间件异步：将更新库存和创建订单的操作异步，库存更新成功之后就将订单信息发给中间件，这样一个请求就可以直接返回了。消费程序再对数据进行入库落地。因为异步了，所以最终需要采取回调或者是其他提醒的方式提醒用户购买完成。</p>
 </li>
 </ul>
-<h3 id="2-mybatis是怎么通过dao里面的接口找到对应的sql的"><a href="#2-mybatis是怎么通过dao里面的接口找到对应的sql的" class="headerlink" title="2. mybatis是怎么通过dao里面的接口找到对应的sql的"></a>2. mybatis是怎么通过dao里面的接口找到对应的sql的</h3><p> 答：</p>
+<h3 id="Mybatis是怎么通过dao里面的接口找到对应的sql的"><a href="#Mybatis是怎么通过dao里面的接口找到对应的sql的" class="headerlink" title="Mybatis是怎么通过dao里面的接口找到对应的sql的"></a>Mybatis是怎么通过dao里面的接口找到对应的sql的</h3><p> 答：</p>
 <ul>
 <li><p>比较复杂，简单点说就是根据namespace和id找到的，哈哈</p>
 <pre><code>1、Mapper接口在初始SqlSessionFactory注册的。
@@ -526,7 +526,7 @@
 5、动态代理的代理类是 MapperProxy ，这里边最终完成了增删改查方法的调用。
 </code></pre></li>
 </ul>
-<h3 id="3-jdk的动态代理和cglib有什么区别"><a href="#3-jdk的动态代理和cglib有什么区别" class="headerlink" title="3. jdk的动态代理和cglib有什么区别"></a>3. jdk的动态代理和cglib有什么区别</h3><p> 答：</p>
+<h3 id="JDK的动态代理和CGLIB有什么区别"><a href="#JDK的动态代理和CGLIB有什么区别" class="headerlink" title="JDK的动态代理和CGLIB有什么区别"></a>JDK的动态代理和CGLIB有什么区别</h3><p> 答：</p>
 <ul>
 <li><p>JDK动态代理依赖Proxy类和InvocationHandler接口，调用Proxy类中的newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)方法可以创建一个动态代理对象，但是这个方法需要3个参数，前两个参数是固定的，但第三个参数比较麻烦，需要我们创建一个类MyInvocationHandler来实现InvocationHandler接口，这个类里面要重写invoke()方法。</p>
 </li>
@@ -535,7 +535,7 @@
 <li><p>Spring框架的一大特点就是AOP，SpringAOP的本质就是动态代理，如果被代理对象实现了接口，就优先使用JDK代理，如果没有实现接口，就用用cglib代理。</p>
 </li>
 </ul>
-<h3 id="4-拦截器相关"><a href="#4-拦截器相关" class="headerlink" title="4. 拦截器相关"></a>4. 拦截器相关</h3><p> 答：</p>
+<h3 id="拦截器相关"><a href="#拦截器相关" class="headerlink" title="拦截器相关"></a>拦截器相关</h3><p> 答：</p>
 <ul>
 <li><p>拦截器（Interceptor）：它依赖于web框架，在SpringMVC中就是依赖于SpringMVC框架。在实现上,基于Java的反射机制，属于面向切面编程（AOP）的一种运用，就是在service或者一个方法前，调用一个方法，或者在方法后，调用一个方法，比如动态代理就是拦截器的简单实现，在调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在调用方法后打印出字符串，甚至在抛出异常的时候做业务逻辑的操作。由于拦截器是基于web框架的调用，因此可以使用Spring的依赖注入（DI）进行一些业务操作，同时一个拦截器实例在一个controller生命周期之内可以多次调用。但是缺点是只能对controller请求进行拦截，对其他的一些比如直接访问静态资源的请求则没办法进行拦截处理。</p>
 </li>
@@ -556,9 +556,9 @@
    况选择合适的
 </code></pre></li>
 </ul>
-<h3 id="5-哨兵的选举策略"><a href="#5-哨兵的选举策略" class="headerlink" title="5. 哨兵的选举策略"></a>5. 哨兵的选举策略</h3><p> 答：不知道，顺便问一句，这个东西知道了有什么用吗？能让我开上法拉利吗？</p>
-<h3 id="6-synchronized做了那些优化"><a href="#6-synchronized做了那些优化" class="headerlink" title="6. synchronized做了那些优化"></a>6. synchronized做了那些优化</h3><p> 这个问题以后碰到了再来看。</p>
-<h3 id="7-volatile是怎么实现可见性的"><a href="#7-volatile是怎么实现可见性的" class="headerlink" title="7. volatile是怎么实现可见性的"></a>7. volatile是怎么实现可见性的</h3><p> 答：</p>
+<h3 id="哨兵的选举策略"><a href="#哨兵的选举策略" class="headerlink" title="哨兵的选举策略"></a>哨兵的选举策略</h3><p> 答：不知道，顺便问一句，这个东西知道了有什么用吗？能让我开上法拉利吗？</p>
+<h3 id="synchronized做了那些优化"><a href="#synchronized做了那些优化" class="headerlink" title="synchronized做了那些优化"></a>synchronized做了那些优化</h3><p> 这个问题以后碰到了再来看。</p>
+<h3 id="volatile是怎么实现可见性的"><a href="#volatile是怎么实现可见性的" class="headerlink" title="volatile是怎么实现可见性的"></a>volatile是怎么实现可见性的</h3><p> 答：</p>
 <ul>
 <li><p>当某个线程需要修改一个数据时，事实上步骤是如下的：</p>
 <pre><code>1、将主存中的数据加载到缓存中
@@ -577,7 +577,7 @@
 </code></pre><p> 在这种情况下，不同的CPU之间就可以感知其他CPU对变量的修改，并重新从内存中加载更新后的值，因此可以解决可见性问题。</p>
 </li>
 </ul>
-<h3 id="8-ArrayList怎么扩容的"><a href="#8-ArrayList怎么扩容的" class="headerlink" title="8. ArrayList怎么扩容的"></a>8. ArrayList怎么扩容的</h3><p> 答: 添加一个元素，首先计算当前的array所需的最小容量的大小，判断是否需要扩容。</p>
+<h3 id="ArrayList怎么扩容的"><a href="#ArrayList怎么扩容的" class="headerlink" title="ArrayList怎么扩容的"></a>ArrayList怎么扩容的</h3><p> 答: 添加一个元素，首先计算当前的array所需的最小容量的大小，判断是否需要扩容。</p>
 <p> 当需要扩容时：</p>
 <ul>
 <li><p>得到当前的ArrayList的容量(oldCapacity)。</p>
@@ -593,8 +593,8 @@
 <li><p>每次array的size到达当前的容量最大值后，再插入数据就会造成扩容。</p>
 </li>
 </ul>
-<h3 id="9-映射器处理器是怎么通过URL找到对应的处理器的"><a href="#9-映射器处理器是怎么通过URL找到对应的处理器的" class="headerlink" title="9. 映射器处理器是怎么通过URL找到对应的处理器的"></a>9. 映射器处理器是怎么通过URL找到对应的处理器的</h3><p> 以后碰到了在来看。</p>
-<h3 id="10-当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"><a href="#10-当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？" class="headerlink" title="10. 当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"></a>10. 当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？</h3><p> 答：</p>
+<h3 id="映射器处理器是怎么通过URL找到对应的处理器的"><a href="#映射器处理器是怎么通过URL找到对应的处理器的" class="headerlink" title="映射器处理器是怎么通过URL找到对应的处理器的"></a>映射器处理器是怎么通过URL找到对应的处理器的</h3><p> 以后碰到了在来看。</p>
+<h3 id="当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"><a href="#当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？" class="headerlink" title="当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"></a>当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？</h3><p> 答：</p>
 <ul>
 <li><p>URL输入</p>
 </li>
@@ -645,18 +645,18 @@
 <li><p>连接结束</p>
 </li>
 </ul>
-<h3 id="11-还有map上的链表什么时候变成红黑树"><a href="#11-还有map上的链表什么时候变成红黑树" class="headerlink" title="11. 还有map上的链表什么时候变成红黑树"></a>11. 还有map上的链表什么时候变成红黑树</h3><p> 答：链表长度为8的时候，初始化是链表保存的，其查找性能是O(n)，而树结构能将查找性能提升到O(log(n))。当链表长度很小的时候，即使遍历，速度也非常快，但是当链表长度不断变长，肯定会对查询性能有一定的影响，所以才需要转成树</p>
+<h3 id="Map上的链表什么时候变成红黑树"><a href="#Map上的链表什么时候变成红黑树" class="headerlink" title="Map上的链表什么时候变成红黑树"></a>Map上的链表什么时候变成红黑树</h3><p> 答：链表长度为8的时候，初始化是链表保存的，其查找性能是O(n)，而树结构能将查找性能提升到O(log(n))。当链表长度很小的时候，即使遍历，速度也非常快，但是当链表长度不断变长，肯定会对查询性能有一定的影响，所以才需要转成树</p>
 <ul>
 <li><p>这个时候就有一些面试管问：可是为什么是8呢？</p>
 </li>
 <li><p>选择8是空间和时间的权衡，不是拍拍屁股决定的，是做java的那些人是根据概率统计决定的</p>
 </li>
 </ul>
-<h3 id="12-什么是自旋锁"><a href="#12-什么是自旋锁" class="headerlink" title="12. 什么是自旋锁"></a>12. 什么是自旋锁</h3><p> 答：首先是一种锁，与互斥锁相似，基本作用是用于线程（进程）之间的同步。与普通锁不同的是，一个线程A在获得普通锁后，如果再有线程B试图获取锁，那么这个线程B将会挂起（阻塞）；试想下，如果两个线程资源竞争不是特别激烈，而处理器阻塞一个线程引起的线程上下文的切换的代价高于等待资源的代价的时候（锁的已保持者保持锁时间比较短），那么线程B可以不放弃CPU时间片，而是在“原地”忙等，直到锁的持有者释放了该锁，这就是自旋锁的原理，可见自旋锁是一种非阻塞锁。</p>
-<h3 id="13-对Lock相关锁的理解"><a href="#13-对Lock相关锁的理解" class="headerlink" title="13. 对Lock相关锁的理解"></a>13. 对Lock相关锁的理解</h3><h3 id="14-什么是hash算法"><a href="#14-什么是hash算法" class="headerlink" title="14. 什么是hash算法"></a>14. 什么是hash算法</h3><p> 答：百科是这样定义哈希算法的：哈希算法可以将任意长度的二进制值映射为较短的，固定长度的二进制值。我们把这个二进制值成为哈希值。</p>
-<h3 id="15-hash冲突怎么回事"><a href="#15-hash冲突怎么回事" class="headerlink" title="15. hash冲突怎么回事"></a>15. hash冲突怎么回事</h3><p> 答：由于哈希算法被计算的数据是无限的，而计算后的结果范围有限，因此总会存在不同的数据经过计算后得到的值相同，这就是哈希冲突</p>
-<h3 id="16-怎么解决hash冲突"><a href="#16-怎么解决hash冲突" class="headerlink" title="16. 怎么解决hash冲突"></a>16. 怎么解决hash冲突</h3><p> 答：解决哈希冲突的方法一般有：开放定址法、链地址法（拉链法）、再哈希法、建立公共溢出区等方法。具体解释Google或百度。</p>
-<h3 id="17-为什么循环删除ArrayList会出错"><a href="#17-为什么循环删除ArrayList会出错" class="headerlink" title="17. 为什么循环删除ArrayList会出错"></a>17. 为什么循环删除ArrayList会出错</h3><p> 答：</p>
+<h3 id="什么是自旋锁"><a href="#什么是自旋锁" class="headerlink" title="什么是自旋锁"></a>什么是自旋锁</h3><p> 答：首先是一种锁，与互斥锁相似，基本作用是用于线程（进程）之间的同步。与普通锁不同的是，一个线程A在获得普通锁后，如果再有线程B试图获取锁，那么这个线程B将会挂起（阻塞）；试想下，如果两个线程资源竞争不是特别激烈，而处理器阻塞一个线程引起的线程上下文的切换的代价高于等待资源的代价的时候（锁的已保持者保持锁时间比较短），那么线程B可以不放弃CPU时间片，而是在“原地”忙等，直到锁的持有者释放了该锁，这就是自旋锁的原理，可见自旋锁是一种非阻塞锁。</p>
+<h3 id="对Lock相关锁的理解"><a href="#对Lock相关锁的理解" class="headerlink" title="对Lock相关锁的理解"></a>对Lock相关锁的理解</h3><h3 id="什么是hash算法"><a href="#什么是hash算法" class="headerlink" title="什么是hash算法"></a>什么是hash算法</h3><p> 答：百科是这样定义哈希算法的：哈希算法可以将任意长度的二进制值映射为较短的，固定长度的二进制值。我们把这个二进制值成为哈希值。</p>
+<h3 id="hash冲突怎么回事"><a href="#hash冲突怎么回事" class="headerlink" title="hash冲突怎么回事"></a>hash冲突怎么回事</h3><p> 答：由于哈希算法被计算的数据是无限的，而计算后的结果范围有限，因此总会存在不同的数据经过计算后得到的值相同，这就是哈希冲突</p>
+<h3 id="怎么解决hash冲突"><a href="#怎么解决hash冲突" class="headerlink" title="怎么解决hash冲突"></a>怎么解决hash冲突</h3><p> 答：解决哈希冲突的方法一般有：开放定址法、链地址法（拉链法）、再哈希法、建立公共溢出区等方法。具体解释Google或百度。</p>
+<h3 id="为什么循环删除ArrayList会出错"><a href="#为什么循环删除ArrayList会出错" class="headerlink" title="为什么循环删除ArrayList会出错"></a>为什么循环删除ArrayList会出错</h3><p> 答：</p>
 <ul>
 <li><p>for循环删除数组里面的元素会向左移，list的长度也会发生变化，但是for循环中的i的数值是自增的，比如说上一次遍历到了第2个元素，下标为1，然后删除，下一次遍历i变成了3，但是第三个元素的下标还是1，这个时候第三个元素就会遍历不到，所以可能会导致少遍历了某个或几个元素。可以用list的长度自减的方式进行删除。</p>
 </li>
@@ -866,7 +866,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-怎么防止卖超或者怎么设置一个秒杀系统"><span class="nav-number">1.</span> <span class="nav-text">1. 怎么防止卖超或者怎么设置一个秒杀系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-mybatis是怎么通过dao里面的接口找到对应的sql的"><span class="nav-number">2.</span> <span class="nav-text">2. mybatis是怎么通过dao里面的接口找到对应的sql的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jdk的动态代理和cglib有什么区别"><span class="nav-number">3.</span> <span class="nav-text">3. jdk的动态代理和cglib有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-拦截器相关"><span class="nav-number">4.</span> <span class="nav-text">4. 拦截器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-哨兵的选举策略"><span class="nav-number">5.</span> <span class="nav-text">5. 哨兵的选举策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-synchronized做了那些优化"><span class="nav-number">6.</span> <span class="nav-text">6. synchronized做了那些优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-volatile是怎么实现可见性的"><span class="nav-number">7.</span> <span class="nav-text">7. volatile是怎么实现可见性的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-ArrayList怎么扩容的"><span class="nav-number">8.</span> <span class="nav-text">8. ArrayList怎么扩容的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-映射器处理器是怎么通过URL找到对应的处理器的"><span class="nav-number">9.</span> <span class="nav-text">9. 映射器处理器是怎么通过URL找到对应的处理器的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"><span class="nav-number">10.</span> <span class="nav-text">10. 当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-还有map上的链表什么时候变成红黑树"><span class="nav-number">11.</span> <span class="nav-text">11. 还有map上的链表什么时候变成红黑树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-什么是自旋锁"><span class="nav-number">12.</span> <span class="nav-text">12. 什么是自旋锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-对Lock相关锁的理解"><span class="nav-number">13.</span> <span class="nav-text">13. 对Lock相关锁的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-什么是hash算法"><span class="nav-number">14.</span> <span class="nav-text">14. 什么是hash算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-hash冲突怎么回事"><span class="nav-number">15.</span> <span class="nav-text">15. hash冲突怎么回事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-怎么解决hash冲突"><span class="nav-number">16.</span> <span class="nav-text">16. 怎么解决hash冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-为什么循环删除ArrayList会出错"><span class="nav-number">17.</span> <span class="nav-text">17. 为什么循环删除ArrayList会出错</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么防止卖超或者怎么设置一个秒杀系统"><span class="nav-number">1.</span> <span class="nav-text">怎么防止卖超或者怎么设置一个秒杀系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis是怎么通过dao里面的接口找到对应的sql的"><span class="nav-number">2.</span> <span class="nav-text">Mybatis是怎么通过dao里面的接口找到对应的sql的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK的动态代理和CGLIB有什么区别"><span class="nav-number">3.</span> <span class="nav-text">JDK的动态代理和CGLIB有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器相关"><span class="nav-number">4.</span> <span class="nav-text">拦截器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哨兵的选举策略"><span class="nav-number">5.</span> <span class="nav-text">哨兵的选举策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized做了那些优化"><span class="nav-number">6.</span> <span class="nav-text">synchronized做了那些优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile是怎么实现可见性的"><span class="nav-number">7.</span> <span class="nav-text">volatile是怎么实现可见性的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList怎么扩容的"><span class="nav-number">8.</span> <span class="nav-text">ArrayList怎么扩容的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射器处理器是怎么通过URL找到对应的处理器的"><span class="nav-number">9.</span> <span class="nav-text">映射器处理器是怎么通过URL找到对应的处理器的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？"><span class="nav-number">10.</span> <span class="nav-text">当你在浏览器地址栏输入一个URL后回车，浏览器做了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map上的链表什么时候变成红黑树"><span class="nav-number">11.</span> <span class="nav-text">Map上的链表什么时候变成红黑树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是自旋锁"><span class="nav-number">12.</span> <span class="nav-text">什么是自旋锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对Lock相关锁的理解"><span class="nav-number">13.</span> <span class="nav-text">对Lock相关锁的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是hash算法"><span class="nav-number">14.</span> <span class="nav-text">什么是hash算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash冲突怎么回事"><span class="nav-number">15.</span> <span class="nav-text">hash冲突怎么回事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么解决hash冲突"><span class="nav-number">16.</span> <span class="nav-text">怎么解决hash冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么循环删除ArrayList会出错"><span class="nav-number">17.</span> <span class="nav-text">为什么循环删除ArrayList会出错</span></a></li></ol></div>
             
 
           </div>
