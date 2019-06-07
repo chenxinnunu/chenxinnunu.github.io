@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="chxin&#39;s Blog">
 <meta property="og:description" content="首先，Spring是一个轻量级的（面向切面AOP、IOC控制反转）容器框架。 Spring的优点 降低组件之间的耦合性 使程序员更加专注于自己的核心业务，像日志、安全等抽出来统一处理 方便单元测试 方便事务处理 不强制应用完全依赖Spring，开发者可以自由选用Sprig的部分或全部功能 对主流框架提供了集成支持，如Hibernate，JPA，Struts等 属于低侵入式设计，代码污染度极低 提供">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-07T09:37:41.425Z">
+<meta property="og:updated_time" content="2019-06-07T12:29:19.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring的核心机制">
 <meta name="twitter:description" content="首先，Spring是一个轻量级的（面向切面AOP、IOC控制反转）容器框架。 Spring的优点 降低组件之间的耦合性 使程序员更加专注于自己的核心业务，像日志、安全等抽出来统一处理 方便单元测试 方便事务处理 不强制应用完全依赖Spring，开发者可以自由选用Sprig的部分或全部功能 对主流框架提供了集成支持，如Hibernate，JPA，Struts等 属于低侵入式设计，代码污染度极低 提供">
@@ -418,7 +418,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-07 17:37:41" itemprop="dateModified" datetime="2019-06-07T17:37:41+08:00">2019-06-07</time>
+                <time title="修改时间：2019-06-07 20:29:19" itemprop="dateModified" datetime="2019-06-07T20:29:19+08:00">2019-06-07</time>
               
             
           </span>
@@ -587,11 +587,11 @@ destroy-method
 </code></pre></li>
 </ol>
 <p>Bean的参数有id、class、factory-bean、factory-method等</p>
-<h2 id="Spring事物管理简单介绍"><a href="#Spring事物管理简单介绍" class="headerlink" title="Spring事物管理简单介绍"></a>Spring事物管理简单介绍</h2><p>包括声明式事务和编程式事务，编程式的，比较灵活，但是代码量大，存在重复的代码比较多；声明式的比编程式的更灵活，最大的好处是大大减少了代码量。编程式不常用，接下来介绍声明式事务管理。</p>
+<h2 id="Spring事务管理简单介绍"><a href="#Spring事务管理简单介绍" class="headerlink" title="Spring事务管理简单介绍"></a>Spring事务管理简单介绍</h2><p>包括声明式事务和编程式事务，编程式的，比较灵活，但是代码量大，存在重复的代码比较多；声明式的比编程式的更灵活，最大的好处是大大减少了代码量。编程式不常用，接下来介绍声明式事务管理。</p>
 <p>声明式事务管理建立在AOP之上的，动态代理实现其机制（不改变源码，对原有的功能动态扩展）。声明式事务管理使业务代码不受污染，这正是spring倡导的非侵入式的开发方式。声明式事物处理也有五种不同的配置方式，单常用的是基于 @Transactional注解的声明式事务管理。此时在DAO上需加上@Transactional注解，在需要事务处理的类或方法上都可以加。</p>
 <p>Spring配置文件中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。</p>
 <p>TransactionDefinition接口定义了四种事物属性是我们需要知道的</p>
-<h3 id="事物传播行为"><a href="#事物传播行为" class="headerlink" title="事物传播行为"></a>事物传播行为</h3><p>在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。</p>
+<h3 id="事务传播行为"><a href="#事务传播行为" class="headerlink" title="事务传播行为"></a>事务传播行为</h3><p>在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。</p>
 <ol>
 <li><p>TransactionDefinition.PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。这是默认值。</p>
 </li>
@@ -608,7 +608,7 @@ destroy-method
 <li><p>TransactionDefinition.PROPAGATION_NESTED：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。</p>
 </li>
 </ol>
-<h3 id="事物隔离级别"><a href="#事物隔离级别" class="headerlink" title="事物隔离级别"></a>事物隔离级别</h3><ol>
+<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><ol>
 <li><p>TransactionDefinition.ISOLATION_DEFAULT：这是默认值，表示使用底层数据库的默认隔离级别。对大部分数据库而言，通常这值就是TransactionDefinition.ISOLATION_READ_COMMITTED。</p>
 </li>
 <li><p>TransactionDefinition.ISOLATION_READ_UNCOMMITTED：该隔离级别表示一个事务可以读取另一个事务修改但还没有提交的数据。该级别不能防止脏读，不可重复读和幻读，因此很少使用该隔离级别。比如PostgreSQL实际上并没有此级别。</p>
@@ -755,7 +755,7 @@ destroy-method
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -776,7 +776,9 @@ destroy-method
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -849,7 +851,7 @@ destroy-method
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP"><span class="nav-number">2.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.2.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC"><span class="nav-number">3.</span> <span class="nav-text">IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">3.2.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">4.</span> <span class="nav-text">Bean的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">5.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">6.</span> <span class="nav-text">Servlet生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设值注入和构造注入及其区别"><span class="nav-number">7.</span> <span class="nav-text">设值注入和构造注入及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设值注入优点"><span class="nav-number">7.1.</span> <span class="nav-text">设值注入优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造注入优点"><span class="nav-number">7.2.</span> <span class="nav-text">构造注入优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring实例化bean的三种方法"><span class="nav-number">8.</span> <span class="nav-text">Spring实例化bean的三种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring事物管理简单介绍"><span class="nav-number">9.</span> <span class="nav-text">Spring事物管理简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事物传播行为"><span class="nav-number">9.1.</span> <span class="nav-text">事物传播行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事物隔离级别"><span class="nav-number">9.2.</span> <span class="nav-text">事物隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务超时"><span class="nav-number">9.3.</span> <span class="nav-text">事务超时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务只读属性"><span class="nav-number">9.4.</span> <span class="nav-text">事务只读属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC流程"><span class="nav-number">10.</span> <span class="nav-text">SpringMVC流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP"><span class="nav-number">2.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.2.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC"><span class="nav-number">3.</span> <span class="nav-text">IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">3.2.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">4.</span> <span class="nav-text">Bean的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">5.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">6.</span> <span class="nav-text">Servlet生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设值注入和构造注入及其区别"><span class="nav-number">7.</span> <span class="nav-text">设值注入和构造注入及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设值注入优点"><span class="nav-number">7.1.</span> <span class="nav-text">设值注入优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造注入优点"><span class="nav-number">7.2.</span> <span class="nav-text">构造注入优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring实例化bean的三种方法"><span class="nav-number">8.</span> <span class="nav-text">Spring实例化bean的三种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring事务管理简单介绍"><span class="nav-number">9.</span> <span class="nav-text">Spring事务管理简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务传播行为"><span class="nav-number">9.1.</span> <span class="nav-text">事务传播行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">9.2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务超时"><span class="nav-number">9.3.</span> <span class="nav-text">事务超时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务只读属性"><span class="nav-number">9.4.</span> <span class="nav-text">事务只读属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC流程"><span class="nav-number">10.</span> <span class="nav-text">SpringMVC流程</span></a></li></ol></div>
             
 
           </div>
